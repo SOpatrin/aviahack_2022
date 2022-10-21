@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import Todo from '../components/Todo/Todo';
 import { useTodos } from '../components/Todo/todo.query';
 
@@ -8,7 +9,15 @@ const Home: NextPage = () => {
   return (
     <>
       <h1 className="text-6xl font-bold">
-        Hello <span className="text-blue-600">Aviahack!</span>
+        Hello{' '}
+        <Link href={'https://app.aviahack.com/team'}>
+          <a
+            className="border-b-2 border-transparent text-blue-600 transition-colors hover:border-blue-600"
+            target="_blank"
+          >
+            Aviahack!
+          </a>
+        </Link>
       </h1>
 
       <p className="mt-3 text-2xl">There are some mock todos ⬇️</p>
