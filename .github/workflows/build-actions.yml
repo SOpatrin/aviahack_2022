@@ -13,3 +13,7 @@ jobs:
       - run: npm run build
       - run: npm run export
       - run: echo Done!
+      - name: upload
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          path: out
