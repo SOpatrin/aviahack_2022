@@ -13,11 +13,13 @@ function App({ Component, pageProps }: AppProps) {
       <StyledEngineProvider injectFirst>
         <CssBaseline>
           <Head>
-            <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+            <title>Aviahack App</title>
             <meta
               name="viewport"
               content="initial-scale=1, width=device-width"
             />
+            <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+            <link rel="icon" href="/favicon.ico" />
           </Head>
           <Component {...pageProps} />
           <ReactQueryDevtools />
