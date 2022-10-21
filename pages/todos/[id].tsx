@@ -12,7 +12,7 @@ const TodoPage: NextPage = () => {
     return <div>Error!</div>;
   }
 
-  return <div>{!data ? <div>Loading...</div> : <Todo {...data} />}</div>;
+  return <>{!data ? <div>Loading...</div> : <Todo {...data} />}</>;
 };
 
 export default TodoPage;

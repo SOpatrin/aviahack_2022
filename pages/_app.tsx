@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Layout from '../components/Layout/Layout';
 
 const queryClient = new QueryClient();
 
@@ -21,7 +22,9 @@ function App({ Component, pageProps }: AppProps) {
             <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
             <link rel="icon" href="/favicon.ico" />
           </Head>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
           <ReactQueryDevtools />
         </CssBaseline>
       </StyledEngineProvider>
