@@ -1,12 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
-import { getTodos } from '../api/api';
+import Todo from '../components/Todo/Todo';
+import { useTodos } from '../components/Todo/todo.query';
 
 const Home: NextPage = () => {
-  const { data } = useQuery(['todos'], getTodos);
+  const { data } = useTodos();
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
@@ -31,16 +30,7 @@ const Home: NextPage = () => {
         </p>
 
         <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          {data?.map(({ userId, id, title }) => (
-            <Link key={id} href={`${id}`}>
-              <a className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600">
-                <h3 className="text-2xl font-bold">{title}</h3>
-                <p className="mt-4 text-xl">
-                  Todo id: {id} User id: {userId}
-                </p>
-              </a>
-            </Link>
-          ))}
+          {data?.map(Todo)}
         </div>
       </main>
 
