@@ -60,9 +60,9 @@ const StorageChart: React.FC<StorageChartProps> = ({
             strokeWidth: 2,
             strokeDasharray: 6,
           },
-          legend: 'Current date',
+          legend: 'Текущая дата',
           textStyle: {
-            fill: colors.zinc[400],
+            fill: colors.zinc[700],
             transform: 'translate(20px, -15px)',
           },
           legendPosition: 'top',
@@ -83,7 +83,7 @@ const StorageChart: React.FC<StorageChartProps> = ({
         tickSize: 0,
         tickPadding: 10,
         tickRotation: 0,
-        legend: 'volume m³',
+        legend: 'объем м³',
         legendOffset: -48,
         legendPosition: 'middle',
       }}
@@ -100,14 +100,13 @@ const StorageChart: React.FC<StorageChartProps> = ({
         ]),
       ]}
       fill={[{ match: '*', id: 'gradientA' }]}
-      enableGridX={false}
       lineWidth={3}
       curve="cardinal"
       colors={color ? [color] : { scheme: 'set3' }}
       sliceTooltip={({ slice }) => (
-        <div className="min-w-[170px] rounded-xl bg-zinc-700 p-4 shadow-lg">
+        <div className="min-w-[170px] rounded-xl border border-zinc-200 bg-white p-4 shadow-lg">
           <div>
-            <strong>{slice.points[0].data.xFormatted}</strong>
+            <span className="font-bold">{slice.points[0].data.xFormatted}</span>
           </div>
           {slice.points.map(
             ({ data: { yFormatted }, id, serieId, serieColor }) => (
@@ -119,7 +118,7 @@ const StorageChart: React.FC<StorageChartProps> = ({
                 <div className="flex w-full justify-between">
                   <div>{serieId}</div>
                   <div className="ml-2">
-                    <strong className="text-right">{yFormatted}</strong>
+                    <span className="text-right font-bold">{yFormatted}</span>
                   </div>
                 </div>
               </div>
@@ -128,24 +127,22 @@ const StorageChart: React.FC<StorageChartProps> = ({
         </div>
       )}
       theme={{
-        textColor: colors.zinc[400],
-        background: colors.zinc[800],
+        textColor: colors.zinc[700],
         tooltip: {
           container: {
-            background: colors.zinc[700],
             borderRadius: 8,
           },
         },
         fontSize: 14,
         grid: {
           line: {
-            stroke: colors.zinc[700],
-            strokeWidth: 2,
+            stroke: colors.zinc[200],
+            strokeWidth: 1,
           },
         },
         crosshair: {
           line: {
-            stroke: colors.rose[100],
+            stroke: colors.zinc[600],
             strokeWidth: 2,
           },
         },

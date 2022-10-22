@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '../Button/Button';
 import { Series } from '../StorageChart/series.model';
 import StorageChart, { ScaleValues } from '../StorageChart/StorageChart';
 
@@ -23,8 +24,10 @@ const CardChart: React.FC<CardChartProps> = ({
   };
 
   return (
-    <div className="flex w-full flex-col px-40">
-      <h2 className="text-4xl">{title}</h2>
+    <div className="flex w-full flex-col rounded-xl border border-zinc-300 bg-white p-6">
+      <h2 className="text-4xl">
+        <strong>{title}</strong>
+      </h2>
       <div className="h-96 w-full">
         {data ? (
           <StorageChart data={data} scale={scale} color={color} />
@@ -35,30 +38,24 @@ const CardChart: React.FC<CardChartProps> = ({
         )}
       </div>
       <div className="flex p-4">
-        <button
-          className={`rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
-            scale === 'daily' && 'bg-zinc-700'
-          }`}
+        <Button
+          active={scale === 'daily'}
           onClick={() => handleScaleChange('daily')}
         >
-          Daily
-        </button>
-        <button
-          className={`ml-2 rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
-            scale === 'monthly' && 'bg-zinc-700'
-          }`}
+          По дням
+        </Button>
+        <Button
+          active={scale === 'monthly'}
           onClick={() => handleScaleChange('monthly')}
         >
-          Monthly
-        </button>
-        <button
-          className={`ml-2 rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
-            scale === 'yearly' && 'bg-zinc-700'
-          }`}
+          По месяцам
+        </Button>
+        <Button
+          active={scale === 'yearly'}
           onClick={() => handleScaleChange('yearly')}
         >
-          Yearly
-        </button>
+          По годам
+        </Button>
       </div>
     </div>
   );

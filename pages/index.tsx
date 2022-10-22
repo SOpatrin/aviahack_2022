@@ -19,31 +19,19 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <h1 className="text-6xl font-bold">
-        Hello{' '}
-        <Link href={'https://app.aviahack.com/team'}>
-          <a
-            className="border-b-2 border-transparent text-blue-500 transition-colors hover:border-blue-500"
-            target="_blank"
-          >
-            Aviahack!
-          </a>
-        </Link>
-      </h1>
-
-      <p className="mt-3 text-2xl">Chart with data from api ⬇️</p>
       <div className="w-full">
         <CardChart
-          title="Keeping"
+          title="Хранение"
           data={keepingData}
           onScaleChange={setKeepingScale}
+          color={colors.red[500]}
         />
       </div>
       <div className="mt-10 w-full">
         <CardChart
-          title="Receiving"
+          title="Обработка"
           data={receivingData}
-          color={colors.emerald[500]}
+          color={colors.orange[500]}
           onScaleChange={setReceivingScale}
         />
       </div>
