@@ -70,7 +70,7 @@ const StorageChart: React.FC<StorageChartProps> = ({
       ]}
       enableSlices="x"
       enableArea
-      areaOpacity={0.07}
+      areaOpacity={0.3}
       axisBottom={{
         tickSize: 0,
         tickPadding: 10,
