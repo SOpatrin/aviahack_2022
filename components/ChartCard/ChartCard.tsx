@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import { Series } from '../StorageChart/series.model';
-import { useSeries } from '../StorageChart/series.query';
 import StorageChart, { ScaleValues } from '../StorageChart/StorageChart';
 
 type CardChartProps = {
   title: string;
   data?: Series[];
   color?: string;
+  onScaleChange?: (value: ScaleValues) => void;
 };
 
-const CardChart: React.FC<CardChartProps> = ({ title, data, color }) => {
+const CardChart: React.FC<CardChartProps> = ({
+  title,
+  data,
+  color,
+  onScaleChange,
+}) => {
   const [scale, setScale] = useState<ScaleValues>('month');
+
+  const handleScaleChange = (value: ScaleValues) => {
+    setScale(value);
+    onScaleChange?.(value);
+  };
 
   return (
     <div className="flex w-full flex-col px-40">
@@ -23,7 +33,7 @@ const CardChart: React.FC<CardChartProps> = ({ title, data, color }) => {
           className={`rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
             scale === 'month' && 'bg-zinc-700'
           }`}
-          onClick={() => setScale('month')}
+          onClick={() => handleScaleChange('month')}
         >
           Month
         </button>
@@ -31,7 +41,7 @@ const CardChart: React.FC<CardChartProps> = ({ title, data, color }) => {
           className={`ml-2 rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
             scale === '3 months' && 'bg-zinc-700'
           }`}
-          onClick={() => setScale('3 months')}
+          onClick={() => handleScaleChange('3 months')}
         >
           3 months
         </button>
@@ -39,7 +49,7 @@ const CardChart: React.FC<CardChartProps> = ({ title, data, color }) => {
           className={`ml-2 rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
             scale === 'year' && 'bg-zinc-700'
           }`}
-          onClick={() => setScale('year')}
+          onClick={() => handleScaleChange('year')}
         >
           Year
         </button>
