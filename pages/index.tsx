@@ -1,13 +1,9 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import StorageChart from '../components/StorageChart/StorageChart';
-import Todo from '../components/Todo/Todo';
-import { useTodos } from '../components/Todo/todo.query';
 import dataChart from '../components/StorageChart/data.json';
 
 const Home: NextPage = () => {
-  const { data } = useTodos();
-
   return (
     <>
       <h1 className="text-6xl font-bold">
@@ -22,14 +18,10 @@ const Home: NextPage = () => {
         </Link>
       </h1>
 
-      <div className="h-80 w-full">
+      <p className="mt-3 text-2xl">Chart with some useless data ⬇️</p>
+
+      <div className="h-80 w-10/12">
         <StorageChart data={dataChart} />
-      </div>
-
-      <p className="mt-3 text-2xl">There are some mock todos ⬇️</p>
-
-      <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-        {data?.map(Todo)}
       </div>
     </>
   );
