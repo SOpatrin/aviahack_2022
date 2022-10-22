@@ -1,12 +1,18 @@
 import { linearGradientDef } from '@nivo/core';
-import { ResponsiveLine, Serie } from '@nivo/line';
+import { ResponsiveLine } from '@nivo/line';
 import colors from 'tailwindcss/colors';
+import { Series } from './series.model';
 
-const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
+const StorageChart: React.FC<{ data: Series[] }> = ({ data }) => (
   <ResponsiveLine
     data={data}
     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-    xScale={{ type: 'point' }}
+    xScale={{
+      type: 'time',
+      format: '%Y-%m-%d',
+      precision: 'day',
+    }}
+    xFormat="time:%Y-%m-%d"
     yScale={{
       type: 'linear',
       min: 'auto',
@@ -14,10 +20,11 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
       stacked: true,
       reverse: false,
     }}
+    yFormat={(value) => `${value}m³`}
     markers={[
       {
         axis: 'x',
-        value: 'boat',
+        value: new Date(),
         lineStyle: {
           stroke: colors.blue[500],
           strokeWidth: 2,
@@ -26,28 +33,25 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
         legend: 'Current date',
         textStyle: {
           fill: colors.zinc[400],
-          transform: 'translate(-10px)',
+          transform: 'translate(20px, -15px)',
         },
-        legendPosition: 'top-left',
+        legendPosition: 'top',
       },
     ]}
     enableSlices="x"
     enableArea
     areaOpacity={0.07}
-    yFormat=" >-.2f"
     axisBottom={{
       tickSize: 0,
       tickPadding: 10,
-      tickRotation: 0,
-      legend: 'transportation',
-      legendOffset: 40,
-      legendPosition: 'middle',
+      tickValues: 'every 2 days',
+      format: '%b %d',
     }}
     axisLeft={{
       tickSize: 0,
       tickPadding: 10,
       tickRotation: 0,
-      legend: 'stacked count',
+      legend: 'volume m³',
       legendOffset: -48,
       legendPosition: 'middle',
     }}

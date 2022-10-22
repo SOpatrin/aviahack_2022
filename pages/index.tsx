@@ -2,8 +2,11 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import StorageChart from '../components/StorageChart/StorageChart';
 import dataChart from '../components/StorageChart/data.json';
+import { useSeries } from '../components/StorageChart/series.query';
 
 const Home: NextPage = () => {
+  const { data } = useSeries();
+
   return (
     <>
       <h1 className="text-6xl font-bold">
@@ -18,11 +21,9 @@ const Home: NextPage = () => {
         </Link>
       </h1>
 
-      <p className="mt-3 text-2xl">Chart with some useless data ⬇️</p>
+      <p className="mt-3 text-2xl">Chart with data from api ⬇️</p>
 
-      <div className="h-96 w-10/12">
-        <StorageChart data={dataChart} />
-      </div>
+      <div className="h-96 w-10/12">{data && <StorageChart data={data} />}</div>
     </>
   );
 };
