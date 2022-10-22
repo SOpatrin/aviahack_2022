@@ -32,6 +32,12 @@ const StorageChart: React.FC<StorageChartProps> = ({
         format: '%Y-%m-%d',
         precision: 'day',
         max: moment().add(scaleToMonths[scale], 'month').toDate(),
+        min: moment()
+          .subtract(
+            scale === 'month' ? 10 : scaleToMonths[scale] / 3,
+            scale === 'month' ? 'day' : 'month'
+          )
+          .toDate(),
       }}
       xFormat="time:%Y-%m-%d"
       yScale={{
@@ -65,7 +71,7 @@ const StorageChart: React.FC<StorageChartProps> = ({
       axisBottom={{
         tickSize: 0,
         tickPadding: 10,
-        tickValues: `every ${2 * scaleToMonths[scale]} days`,
+        tickValues: `every ${3 * scaleToMonths[scale]} days`,
         format: '%b %d',
       }}
       axisLeft={{
