@@ -1,10 +1,11 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getSeries } from "../../api/api";
 import { Series } from "./series.model";
+import { ScaleValues } from "./StorageChart";
 
 const keys = {
   all: ['series'],
-  byId: (id: string) => [...keys.all, id],
+  byScale: (scale?: string) => [...keys.all, scale],
 } as const;
 
 const useCashedSeriesInitialData = (id: string) => {
@@ -18,8 +19,23 @@ const useCashedSeriesInitialData = (id: string) => {
   }
 }
 
-const useSeries = () => {
-  return useQuery(keys.all, getSeries);
+const fromScale = {
+  daily: {
+    delta: 30 * 2,
+    precisionDays: 1,
+  },
+  monthly: {
+    delta: 30 * 12 * 2,
+    precisionDays: 30,
+  },
+  yearly: {
+    delta: 365 * 3 * 2,
+    precisionDays: 365,
+  },
+}
+
+const useSeries = (scale: ScaleValues = 'daily') => {
+  return useQuery(keys.byScale(scale), () => getSeries(fromScale[scale].delta, fromScale[scale].precisionDays));
 }
 
 export {

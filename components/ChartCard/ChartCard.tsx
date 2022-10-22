@@ -15,7 +15,7 @@ const CardChart: React.FC<CardChartProps> = ({
   color,
   onScaleChange,
 }) => {
-  const [scale, setScale] = useState<ScaleValues>('month');
+  const [scale, setScale] = useState<ScaleValues>('daily');
 
   const handleScaleChange = (value: ScaleValues) => {
     setScale(value);
@@ -26,32 +26,38 @@ const CardChart: React.FC<CardChartProps> = ({
     <div className="flex w-full flex-col px-40">
       <h2 className="text-4xl">{title}</h2>
       <div className="h-96 w-full">
-        {data && <StorageChart data={data} scale={scale} color={color} />}
+        {data ? (
+          <StorageChart data={data} scale={scale} color={color} />
+        ) : (
+          <div className="flex h-full items-center justify-center text-lg">
+            Loading...
+          </div>
+        )}
       </div>
       <div className="flex p-4">
         <button
           className={`rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
-            scale === 'month' && 'bg-zinc-700'
+            scale === 'daily' && 'bg-zinc-700'
           }`}
-          onClick={() => handleScaleChange('month')}
+          onClick={() => handleScaleChange('daily')}
         >
-          Month
+          Daily
         </button>
         <button
           className={`ml-2 rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
-            scale === '3 months' && 'bg-zinc-700'
+            scale === 'monthly' && 'bg-zinc-700'
           }`}
-          onClick={() => handleScaleChange('3 months')}
+          onClick={() => handleScaleChange('monthly')}
         >
-          3 months
+          Monthly
         </button>
         <button
           className={`ml-2 rounded-xl border border-zinc-400 p-2 hover:bg-zinc-500 active:bg-zinc-600 ${
-            scale === 'year' && 'bg-zinc-700'
+            scale === 'yearly' && 'bg-zinc-700'
           }`}
-          onClick={() => handleScaleChange('year')}
+          onClick={() => handleScaleChange('yearly')}
         >
-          Year
+          Yearly
         </button>
       </div>
     </div>

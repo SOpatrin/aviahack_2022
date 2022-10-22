@@ -3,9 +3,19 @@ import Link from 'next/link';
 import { useSeries } from '../components/StorageChart/series.query';
 import CardChart from '../components/ChartCard/ChartCard';
 import colors from 'tailwindcss/colors';
+import { ScaleValues } from '../components/StorageChart/StorageChart';
+import { useState } from 'react';
 
 const Home: NextPage = () => {
-  const { data } = useSeries();
+  const [keepingScale, setKeepingScale] = useState<ScaleValues>('daily');
+  const [receivingScale, setReceivingScale] = useState<ScaleValues>('daily');
+
+  const keepingData = useSeries(keepingScale).data?.filter(
+    ({ id }) => id === 'keeping'
+  );
+  const receivingData = useSeries(receivingScale).data?.filter(
+    ({ id }) => id === 'receiving'
+  );
 
   return (
     <>
@@ -25,14 +35,16 @@ const Home: NextPage = () => {
       <div className="w-full">
         <CardChart
           title="Keeping"
-          data={data?.filter(({ id }) => id === 'keeping')}
+          data={keepingData}
+          onScaleChange={setKeepingScale}
         />
       </div>
       <div className="mt-10 w-full">
         <CardChart
           title="Receiving"
-          data={data?.filter(({ id }) => id === 'receiving')}
+          data={receivingData}
           color={colors.emerald[500]}
+          onScaleChange={setReceivingScale}
         />
       </div>
     </>

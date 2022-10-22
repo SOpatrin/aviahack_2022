@@ -10,17 +10,29 @@ type StorageChartProps = {
   color?: string;
 };
 
-export type ScaleValues = 'month' | '3 months' | 'year';
+export type ScaleValues = 'daily' | 'monthly' | 'yearly';
 
 const scaleToMonths = {
-  month: 1,
-  '3 months': 3,
-  year: 12,
+  daily: 1,
+  monthly: 30,
+  yearly: 365,
+};
+
+const upperScale = {
+  daily: 30,
+  monthly: 12 * 30,
+  yearly: 3 * 365,
+};
+
+const formatScale = {
+  daily: '%b %d',
+  monthly: '%b',
+  yearly: '%Y',
 };
 
 const StorageChart: React.FC<StorageChartProps> = ({
   data,
-  scale = 'month',
+  scale = 'daily',
   color,
 }) => {
   return (
@@ -31,19 +43,10 @@ const StorageChart: React.FC<StorageChartProps> = ({
         type: 'time',
         format: '%Y-%m-%d',
         precision: 'day',
-        max: moment().add(scaleToMonths[scale], 'month').toDate(),
-        min: moment()
-          .subtract(
-            scale === 'month' ? 10 : scaleToMonths[scale] / 3,
-            scale === 'month' ? 'day' : 'month'
-          )
-          .toDate(),
       }}
       xFormat="time:%Y-%m-%d"
       yScale={{
         type: 'linear',
-        min: 'auto',
-        max: 'auto',
         stacked: true,
         reverse: false,
       }}
@@ -71,8 +74,10 @@ const StorageChart: React.FC<StorageChartProps> = ({
       axisBottom={{
         tickSize: 0,
         tickPadding: 10,
-        tickValues: `every ${3 * scaleToMonths[scale]} days`,
-        format: '%b %d',
+        tickValues: `every ${
+          scale === 'daily' ? scaleToMonths[scale] * 3 : scaleToMonths[scale]
+        } days`,
+        format: formatScale[scale],
       }}
       axisLeft={{
         tickSize: 0,
