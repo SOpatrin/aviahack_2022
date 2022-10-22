@@ -47,7 +47,7 @@ const StorageChart: React.FC<StorageChartProps> = ({
         stacked: true,
         reverse: false,
       }}
-      yFormat={(value) => `${value}m³`}
+      yFormat={(value) => `${Number(value).toFixed(2)}m³`}
       markers={[
         {
           axis: 'x',
