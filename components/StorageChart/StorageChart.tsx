@@ -47,7 +47,7 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
       tickSize: 0,
       tickPadding: 10,
       tickRotation: 0,
-      legend: 'count',
+      legend: 'stacked count',
       legendOffset: -48,
       legendPosition: 'middle',
     }}
@@ -92,7 +92,7 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
     ]}
     enableGridX={false}
     lineWidth={3}
-    curve="natural"
+    curve="cardinal"
     colors={{ scheme: 'set3' }}
     theme={{
       textColor: colors.zinc[400],
