@@ -1,3 +1,4 @@
+import { linearGradientDef } from '@nivo/core';
 import { ResponsiveLine, Serie } from '@nivo/line';
 import colors from 'tailwindcss/colors';
 
@@ -15,7 +16,7 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
     }}
     enableSlices="x"
     enableArea
-    areaOpacity={0.02}
+    areaOpacity={0.07}
     yFormat=" >-.2f"
     axisBottom={{
       tickSize: 0,
@@ -39,6 +40,13 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
     pointBorderColor={{ from: 'serieColor' }}
     pointLabelYOffset={-12}
     useMesh={true}
+    defs={[
+      linearGradientDef('gradientA', [
+        { offset: 0, color: 'inherit' },
+        { offset: 100, color: 'inherit', opacity: 0 },
+      ]),
+    ]}
+    fill={[{ match: '*', id: 'gradientA' }]}
     legends={[
       {
         anchor: 'bottom-right',
