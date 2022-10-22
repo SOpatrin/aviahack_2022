@@ -14,6 +14,23 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
       stacked: true,
       reverse: false,
     }}
+    markers={[
+      {
+        axis: 'x',
+        value: 'boat',
+        lineStyle: {
+          stroke: colors.indigo[500],
+          strokeWidth: 2,
+          strokeDasharray: 6,
+        },
+        legend: 'Current date',
+        textStyle: {
+          fill: colors.zinc[400],
+          transform: 'translate(-10px)',
+        },
+        legendPosition: 'top-left',
+      },
+    ]}
     enableSlices="x"
     enableArea
     areaOpacity={0.07}
