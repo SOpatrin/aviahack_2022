@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
-import StorageChart from '../components/StorageChart/StorageChart';
-import dataChart from '../components/StorageChart/data.json';
 import { useSeries } from '../components/StorageChart/series.query';
+import CardChart from '../components/ChartCard/ChartCard';
+import colors from 'tailwindcss/colors';
 
 const Home: NextPage = () => {
   const { data } = useSeries();
@@ -22,8 +22,19 @@ const Home: NextPage = () => {
       </h1>
 
       <p className="mt-3 text-2xl">Chart with data from api ⬇️</p>
-
-      <div className="h-96 w-10/12">{data && <StorageChart data={data} />}</div>
+      <div className="w-full">
+        <CardChart
+          title="Keeping"
+          data={data?.filter(({ id }) => id === 'keeping')}
+        />
+      </div>
+      <div className="mt-10 w-full">
+        <CardChart
+          title="Receiving"
+          data={data?.filter(({ id }) => id === 'receiving')}
+          color={colors.emerald[500]}
+        />
+      </div>
     </>
   );
 };
