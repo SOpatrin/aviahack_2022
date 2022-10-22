@@ -19,7 +19,7 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
         axis: 'x',
         value: 'boat',
         lineStyle: {
-          stroke: colors.indigo[500],
+          stroke: colors.blue[500],
           strokeWidth: 2,
           strokeDasharray: 6,
         },
@@ -93,7 +93,7 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
     enableGridX={false}
     lineWidth={3}
     curve="natural"
-    colors={[colors.indigo[500], colors.sky[500], colors.blue[500]]}
+    colors={{ scheme: 'set3' }}
     theme={{
       textColor: colors.zinc[400],
       background: colors.zinc[800],
@@ -112,7 +112,7 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
       },
       crosshair: {
         line: {
-          stroke: colors.indigo[600],
+          stroke: colors.rose[100],
           strokeWidth: 2,
         },
       },
