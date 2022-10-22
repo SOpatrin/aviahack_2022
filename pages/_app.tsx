@@ -20,6 +20,7 @@ function App({ Component, pageProps }: AppProps) {
               content="initial-scale=1, width=device-width"
             />
             <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+            <link rel="stylesheet" href="fonts.css" />
             <link rel="icon" href="favicon.ico" />
           </Head>
           <Layout>
