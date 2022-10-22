@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         Hello{' '}
         <Link href={'https://app.aviahack.com/team'}>
           <a
-            className="border-b-2 border-transparent text-blue-600 transition-colors hover:border-blue-600"
+            className="border-b-2 border-transparent text-blue-500 transition-colors hover:border-blue-500"
             target="_blank"
           >
             Aviahack!
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
       <p className="mt-3 text-2xl">Chart with some useless data ⬇️</p>
 
-      <div className="h-80 w-10/12">
+      <div className="h-96 w-10/12">
         <StorageChart data={dataChart} />
       </div>
     </>

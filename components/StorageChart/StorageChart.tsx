@@ -1,12 +1,6 @@
-// install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/line
 import { ResponsiveLine, Serie } from '@nivo/line';
+import colors from 'tailwindcss/colors';
 
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
 const StorageChart: React.FC<{ data: Serie[] }> = ({
   data /* see data tab */,
 }) => (
@@ -21,23 +15,24 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({
       stacked: true,
       reverse: false,
     }}
+    enableSlices="x"
+    enableArea
+    areaOpacity={0.02}
     yFormat=" >-.2f"
-    axisTop={null}
-    axisRight={null}
     axisBottom={{
-      tickSize: 5,
-      tickPadding: 5,
+      tickSize: 0,
+      tickPadding: 10,
       tickRotation: 0,
       legend: 'transportation',
-      legendOffset: 36,
+      legendOffset: 40,
       legendPosition: 'middle',
     }}
     axisLeft={{
-      tickSize: 5,
-      tickPadding: 5,
+      tickSize: 0,
+      tickPadding: 10,
       tickRotation: 0,
       legend: 'count',
-      legendOffset: -40,
+      legendOffset: -48,
       legendPosition: 'middle',
     }}
     pointSize={10}
@@ -72,6 +67,33 @@ const StorageChart: React.FC<{ data: Serie[] }> = ({
         ],
       },
     ]}
+    enableGridX={false}
+    lineWidth={3}
+    curve="natural"
+    colors={[colors.indigo[500], colors.sky[500], colors.blue[500]]}
+    theme={{
+      textColor: colors.zinc[400],
+      background: colors.zinc[800],
+      tooltip: {
+        container: {
+          background: colors.zinc[700],
+          borderRadius: 8,
+        },
+      },
+      fontSize: 14,
+      grid: {
+        line: {
+          stroke: colors.zinc[700],
+          strokeWidth: 2,
+        },
+      },
+      crosshair: {
+        line: {
+          stroke: colors.indigo[600],
+          strokeWidth: 2,
+        },
+      },
+    }}
   />
 );
 
