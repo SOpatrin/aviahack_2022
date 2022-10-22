@@ -1,9 +1,7 @@
 import { ResponsiveLine, Serie } from '@nivo/line';
 import colors from 'tailwindcss/colors';
 
-const StorageChart: React.FC<{ data: Serie[] }> = ({
-  data /* see data tab */,
-}) => (
+const StorageChart: React.FC<{ data: Serie[] }> = ({ data }) => (
   <ResponsiveLine
     data={data}
     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
