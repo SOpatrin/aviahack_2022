@@ -68,6 +68,10 @@ const StorageChart: React.FC<{ data: Series[] }> = ({ data }) => (
       ]),
     ]}
     fill={[{ match: '*', id: 'gradientA' }]}
+    enableGridX={false}
+    lineWidth={3}
+    curve="cardinal"
+    colors={{ scheme: 'set3' }}
     legends={[
       {
         anchor: 'bottom-right',
@@ -94,10 +98,29 @@ const StorageChart: React.FC<{ data: Series[] }> = ({ data }) => (
         ],
       },
     ]}
-    enableGridX={false}
-    lineWidth={3}
-    curve="cardinal"
-    colors={{ scheme: 'set3' }}
+    sliceTooltip={({ slice }) => (
+      <div className="min-w-[170px] rounded-xl bg-zinc-700 p-4 shadow-lg">
+        <div>
+          <strong>{slice.points[0].data.xFormatted}</strong>
+        </div>
+        {slice.points.map(
+          ({ data: { yFormatted }, id, serieId, serieColor }) => (
+            <div className="flex items-center" key={id}>
+              <div
+                className="mr-2 h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: serieColor }}
+              ></div>
+              <div className="flex w-full justify-between">
+                <div>{serieId}</div>
+                <div className="ml-2">
+                  <strong className="text-right">{yFormatted}</strong>
+                </div>
+              </div>
+            </div>
+          )
+        )}
+      </div>
+    )}
     theme={{
       textColor: colors.zinc[400],
       background: colors.zinc[800],
