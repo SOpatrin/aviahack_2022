@@ -2,7 +2,6 @@ import { linearGradientDef } from '@nivo/core';
 import { ResponsiveLine } from '@nivo/line';
 import colors from 'tailwindcss/colors';
 import { Series } from './series.model';
-import moment from 'moment';
 
 type StorageChartProps = {
   data: Series[];
