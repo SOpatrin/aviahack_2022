@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import colors from 'tailwindcss/colors';
 import CardChart from '../components/ChartCard/ChartCard';
 import { useSeries } from '../components/StorageChart/series.query';
@@ -8,6 +9,14 @@ import { ScaleValues } from '../components/StorageChart/StorageChart';
 const Home: NextPage = () => {
   const [keepingScale, setKeepingScale] = useState<ScaleValues>('daily');
   const [receivingScale, setReceivingScale] = useState<ScaleValues>('daily');
+
+  const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push('/1/logistic');
+    }, 0);
+  }, [router]);
 
   const keepingData = useSeries(keepingScale).data?.filter(
     ({ id }) => id === 'keeping'
