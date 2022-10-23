@@ -9,7 +9,7 @@ const Finances: NextPage = () => {
   const [keepingScale, setKeepingScale] = useState<ScaleValues>('daily');
 
   const keepingData = useSeries(keepingScale).data?.filter(
-    ({ id }) => id === 'keeping'
+    ({ id }) => id === 'keeping' || id === 'receiving'
   );
 
   return (
@@ -19,7 +19,6 @@ const Finances: NextPage = () => {
           title="Финансы"
           data={keepingData}
           onScaleChange={setKeepingScale}
-          color={colors.red[600]}
         />
       </div>
     </>

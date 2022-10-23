@@ -46,7 +46,6 @@ const StorageChart: React.FC<StorageChartProps> = ({
       xFormat="time:%Y-%m-%d"
       yScale={{
         type: 'linear',
-        stacked: true,
         reverse: false,
       }}
       yFormat={(value) => `${Number(value).toFixed(2)}m³`}
@@ -68,7 +67,7 @@ const StorageChart: React.FC<StorageChartProps> = ({
         },
       ]}
       enableSlices="x"
-      enableArea
+      enableArea={data.length === 1}
       areaOpacity={0.3}
       axisBottom={{
         tickSize: 0,
@@ -101,7 +100,11 @@ const StorageChart: React.FC<StorageChartProps> = ({
       fill={[{ match: '*', id: 'gradientA' }]}
       lineWidth={3}
       curve="cardinal"
-      colors={color ? [color] : { scheme: 'set3' }}
+      colors={
+        color
+          ? [color]
+          : [colors.red[600], colors.blue[600], colors.orange[600]]
+      }
       sliceTooltip={({ slice }) => (
         <div className="min-w-[170px] rounded-xl border border-zinc-200 bg-white p-4 shadow-lg">
           <div>
