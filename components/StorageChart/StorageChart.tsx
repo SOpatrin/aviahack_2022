@@ -46,11 +46,15 @@ const StorageChart: React.FC<StorageChartProps> = ({
         type: 'time',
         format: '%Y-%m-%d',
         precision: 'day',
+        min: 'auto',
+        max: 'auto',
       }}
       xFormat="time:%Y-%m-%d"
       yScale={{
         type: 'linear',
         reverse: false,
+        min: 'auto',
+        max: 'auto',
       }}
       yFormat={(value) => `${Number(value).toFixed(2)}${valueUnit}`}
       markers={[
