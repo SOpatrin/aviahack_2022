@@ -11,6 +11,15 @@ const nextConfig = {
   ) {
     return defaultPathMap;
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/1/logistic',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

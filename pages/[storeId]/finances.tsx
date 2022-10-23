@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
-import { useSeries } from '../components/StorageChart/series.query';
-import CardChart from '../components/ChartCard/ChartCard';
-import { ScaleValues } from '../components/StorageChart/StorageChart';
+import { useSeries } from '../../components/StorageChart/series.query';
+import CardChart from '../../components/ChartCard/ChartCard';
+import { ScaleValues } from '../../components/StorageChart/StorageChart';
 import { useState } from 'react';
 
 const Finances: NextPage = () => {
