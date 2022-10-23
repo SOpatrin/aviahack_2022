@@ -1,4 +1,8 @@
-const FileUpload: React.FC = () => {
+type FileUploadProps = {
+  onChange?: (file: File) => void;
+};
+
+const FileUpload: React.FC<FileUploadProps> = ({ onChange }) => {
   return (
     <div className="flex w-full items-center justify-center">
       <label
@@ -32,6 +36,9 @@ const FileUpload: React.FC = () => {
           type="file"
           className="hidden"
           accept=".csv"
+          onChange={(event) =>
+            event.target.files && onChange?.(event.target.files[0])
+          }
         />
       </label>
     </div>

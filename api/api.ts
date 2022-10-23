@@ -8,3 +8,12 @@ export async function getSeries(delta = 365, precisionDays = 1): Promise<Series[
   const series: Series[] = (await (await fetch(new URL(`${paths.series}?precisionDays=${precisionDays}&from=${from}&to=${to}`, apiBasePath))).json()).series;
   return series;
 }
+
+export async function uploadData(file: File) {
+  const formData = new FormData();
+  formData.append("file", file);
+  fetch(new URL(`${paths.weights}`, apiBasePath), {
+    method: "POST",
+    body: formData,
+  })
+}

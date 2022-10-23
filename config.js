@@ -5,4 +5,5 @@ export const paths = {
   finances: '/finances',
   upload: '/upload',
   series: '/series-mock',
+  weights: '/weights',
 };
