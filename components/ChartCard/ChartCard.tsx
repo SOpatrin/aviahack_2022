@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from '../Button/Button';
+import Card from '../Card/Card';
 import { Series } from '../StorageChart/series.model';
 import StorageChart, { ScaleValues } from '../StorageChart/StorageChart';
 
@@ -24,10 +25,7 @@ const CardChart: React.FC<CardChartProps> = ({
   };
 
   return (
-    <div className="flex w-full flex-col rounded-xl border border-zinc-300 bg-white p-6">
-      <h2 className="text-4xl">
-        <strong>{title}</strong>
-      </h2>
+    <Card title={title}>
       <div className="h-96 w-full">
         {data ? (
           <StorageChart data={data} scale={scale} color={color} />
@@ -57,7 +55,7 @@ const CardChart: React.FC<CardChartProps> = ({
           По годам
         </Button>
       </div>
-    </div>
+    </Card>
   );
 };
 
