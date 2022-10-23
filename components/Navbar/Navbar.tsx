@@ -4,6 +4,7 @@ import { paths } from '../../config';
 import Finances from '../Icons/Finances';
 import Logistic from '../Icons/Logistic';
 import Upload from '../Icons/Upload';
+import Select from '../Select/Select';
 
 type NavItemProps = {
   children: React.ReactNode;
@@ -33,6 +34,15 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   return (
     <nav className="min-w[264px] flex w-80 shrink-0 flex-col self-stretch border border-zinc-300 bg-white py-6 px-4 shadow-sm">
+      <div className="mb-2">
+        <Select>
+          <option selected value="1">
+            Склад 1
+          </option>
+          <option value="2">Склад 2</option>
+          <option value="3">Склад 3</option>
+        </Select>
+      </div>
       <NavItem
         active={router.route === paths.logistic}
         href={paths.logistic}
