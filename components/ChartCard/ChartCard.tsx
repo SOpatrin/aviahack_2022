@@ -9,6 +9,8 @@ type CardChartProps = {
   data?: Series[];
   color?: string;
   onScaleChange?: (value: ScaleValues) => void;
+  yAxisLegend?: string;
+  valueUnit?: string;
 };
 
 const CardChart: React.FC<CardChartProps> = ({
@@ -16,6 +18,8 @@ const CardChart: React.FC<CardChartProps> = ({
   data,
   color,
   onScaleChange,
+  yAxisLegend,
+  valueUnit,
 }) => {
   const [scale, setScale] = useState<ScaleValues>('daily');
 
@@ -28,7 +32,13 @@ const CardChart: React.FC<CardChartProps> = ({
     <Card title={title}>
       <div className="h-96 w-full">
         {data ? (
-          <StorageChart data={data} scale={scale} color={color} />
+          <StorageChart
+            data={data}
+            scale={scale}
+            color={color}
+            yAxisLegend={yAxisLegend}
+            valueUnit={valueUnit}
+          />
         ) : (
           <div className="flex h-full items-center justify-center text-lg">
             Loading...

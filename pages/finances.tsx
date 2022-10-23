@@ -19,6 +19,8 @@ const Finances: NextPage = () => {
           title="Финансы"
           data={keepingData}
           onScaleChange={setKeepingScale}
+          yAxisLegend="рубли"
+          valueUnit="₽"
         />
       </div>
     </>

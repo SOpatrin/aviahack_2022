@@ -7,6 +7,8 @@ type StorageChartProps = {
   data: Series[];
   scale?: ScaleValues;
   color?: string;
+  yAxisLegend?: string;
+  valueUnit?: string;
 };
 
 export type ScaleValues = 'daily' | 'monthly' | 'yearly';
@@ -33,6 +35,8 @@ const StorageChart: React.FC<StorageChartProps> = ({
   data,
   scale = 'daily',
   color,
+  yAxisLegend = 'объем',
+  valueUnit = 'м³',
 }) => {
   return (
     <ResponsiveLine
@@ -48,7 +52,7 @@ const StorageChart: React.FC<StorageChartProps> = ({
         type: 'linear',
         reverse: false,
       }}
-      yFormat={(value) => `${Number(value).toFixed(2)}m³`}
+      yFormat={(value) => `${Number(value).toFixed(2)}${valueUnit}`}
       markers={[
         {
           axis: 'x',
@@ -81,7 +85,7 @@ const StorageChart: React.FC<StorageChartProps> = ({
         tickSize: 0,
         tickPadding: 10,
         tickRotation: 0,
-        legend: 'объем м³',
+        legend: `${yAxisLegend} ${valueUnit}`,
         legendOffset: -48,
         legendPosition: 'middle',
       }}
