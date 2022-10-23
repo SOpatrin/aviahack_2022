@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       router.push('/1/logistic');
-    }, 0);
+    }, 500);
   }, [router]);
 
   const keepingData = useSeries(keepingScale).data?.filter(
