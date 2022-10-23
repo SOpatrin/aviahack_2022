@@ -44,7 +44,7 @@ const CardChart: React.FC<CardChartProps> = ({
             По дням
           </Button>
         </div>
-        <div className="ml-2">
+        <div className="ml-3">
           <Button
             active={scale === 'monthly'}
             onClick={() => handleScaleChange('monthly')}
@@ -52,7 +52,7 @@ const CardChart: React.FC<CardChartProps> = ({
             По месяцам
           </Button>
         </div>
-        <div className="ml-2">
+        <div className="ml-3">
           <Button
             active={scale === 'yearly'}
             onClick={() => handleScaleChange('yearly')}

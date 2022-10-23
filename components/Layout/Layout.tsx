@@ -8,7 +8,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex min-h-screen justify-center bg-gray-200 text-gray-700">
       <Navbar />
-      <main className="flex w-full flex-col items-center p-8">{children}</main>
+      <main className="flex w-full flex-col items-center p-6">{children}</main>
     </div>
   );
 };

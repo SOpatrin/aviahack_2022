@@ -7,7 +7,7 @@ type ButtonProps = {
 const Button: React.FC<ButtonProps> = ({ active, onClick, children }) => {
   return (
     <button
-      className={`rounded-lg bg-gray-100 p-3 font-medium transition-colors hover:bg-gray-200 active:bg-gray-300 ${
+      className={`rounded-lg bg-gray-100 py-3 px-4 font-medium transition-colors hover:bg-gray-200 active:bg-gray-300 ${
         active && 'bg-red-600 text-white hover:bg-red-700 active:bg-red-800'
       } ${!active && 'text-gray-700'}`}
       onClick={onClick}
