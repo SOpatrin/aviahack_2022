@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: process.env.BASE_PATH || '',
+  basePath: process.env.NODE_ENV === 'development' ? '' : '/aviahack_2022',
   reactStrictMode: true,
   swcMinify: true,
   images: {
