@@ -23,7 +23,6 @@ const Home: NextPage = () => {
           title="Хранение"
           data={keepingData}
           onScaleChange={setKeepingScale}
-          color={colors.red[600]}
         />
       </div>
       <div className="mt-10 w-full">
