@@ -20,6 +20,18 @@ const nextConfig = {
         permanent: false,
       },
       {
+        basePath: 'aviahack_2022/',
+        source: '/',
+        destination: '/1/logistic',
+        permanent: false,
+      },
+      {
+        source: '/:storeId',
+        destination: '/:storeId/logistic',
+        permanent: false,
+      },
+      {
+        basePath: 'aviahack_2022/',
         source: '/:storeId',
         destination: '/:storeId/logistic',
         permanent: false,
