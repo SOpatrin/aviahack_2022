@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <Mts />
         </div>
       </header>
-      <div className="flex w-full">
+      <div className="flex min-h-[calc(100vh-64px)] w-full">
         <Navbar />
         <main className="flex w-full flex-col items-center p-6">
           {children}
