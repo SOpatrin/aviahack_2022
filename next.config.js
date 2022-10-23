@@ -18,6 +18,11 @@ const nextConfig = {
         destination: '/1/logistic',
         permanent: false,
       },
+      {
+        source: '/:storeId',
+        destination: '/:storeId/logistic',
+        permanent: false,
+      },
     ];
   },
 };
