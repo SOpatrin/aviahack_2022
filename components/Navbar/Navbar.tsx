@@ -32,7 +32,7 @@ const NavItem: React.FC<NavItemProps> = ({ children, active, href, icon }) => {
 const Navbar: React.FC = () => {
   const router = useRouter();
   return (
-    <nav className="min-w[264px] flex w-80 shrink-0 flex-col self-stretch border border-zinc-300 bg-white py-8 px-4">
+    <nav className="min-w[264px] flex w-80 shrink-0 flex-col self-stretch border border-zinc-300 bg-white py-8 px-4 shadow-sm">
       <NavItem
         active={router.route === paths.logistic}
         href={paths.logistic}

@@ -36,24 +36,30 @@ const CardChart: React.FC<CardChartProps> = ({
         )}
       </div>
       <div className="flex p-4">
-        <Button
-          active={scale === 'daily'}
-          onClick={() => handleScaleChange('daily')}
-        >
-          По дням
-        </Button>
-        <Button
-          active={scale === 'monthly'}
-          onClick={() => handleScaleChange('monthly')}
-        >
-          По месяцам
-        </Button>
-        <Button
-          active={scale === 'yearly'}
-          onClick={() => handleScaleChange('yearly')}
-        >
-          По годам
-        </Button>
+        <div>
+          <Button
+            active={scale === 'daily'}
+            onClick={() => handleScaleChange('daily')}
+          >
+            По дням
+          </Button>
+        </div>
+        <div className="ml-2">
+          <Button
+            active={scale === 'monthly'}
+            onClick={() => handleScaleChange('monthly')}
+          >
+            По месяцам
+          </Button>
+        </div>
+        <div className="ml-2">
+          <Button
+            active={scale === 'yearly'}
+            onClick={() => handleScaleChange('yearly')}
+          >
+            По годам
+          </Button>
+        </div>
       </div>
     </Card>
   );
