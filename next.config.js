@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: process.env.BASE_PATH || '/',
+  basePath: process.env.BASE_PATH || '',
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -20,8 +20,7 @@ const nextConfig = {
         permanent: false,
       },
       {
-        basePath: 'aviahack_2022/',
-        source: '/',
+        source: '/aviahack_2022',
         destination: '/1/logistic',
         permanent: false,
       },
@@ -31,8 +30,7 @@ const nextConfig = {
         permanent: false,
       },
       {
-        basePath: 'aviahack_2022/',
-        source: '/:storeId',
+        source: '/aviahack_2022/:storeId',
         destination: '/:storeId/logistic',
         permanent: false,
       },
