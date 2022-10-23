@@ -24,14 +24,14 @@ const Home: NextPage = () => {
           title="Хранение"
           data={keepingData}
           onScaleChange={setKeepingScale}
-          color={colors.red[500]}
+          color={colors.red[600]}
         />
       </div>
       <div className="mt-10 w-full">
         <CardChart
           title="Обработка"
           data={receivingData}
-          color={colors.orange[500]}
+          color={colors.orange[600]}
           onScaleChange={setReceivingScale}
         />
       </div>
