@@ -6,6 +6,10 @@ Open [link](https://sopatrin.github.io/aviahack_2022) to see the project
 
 Project based on [next.js](https://nextjs.org/)
 
+![telegram-cloud-photo-size-2-5377634517763867425-y](https://github.com/SOpatrin/aviahack_2022/assets/15911358/aee1eebb-442f-4d4d-bf9f-e61065755c02)
+![telegram-cloud-photo-size-2-5381971588624269228-y](https://github.com/SOpatrin/aviahack_2022/assets/15911358/7215b7b4-80d9-48df-b82c-61a7d95835fa)
+
+
 ## Instruction for local start
 
 ### Requirements
